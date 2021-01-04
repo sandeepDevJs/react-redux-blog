@@ -8,7 +8,8 @@ class DetailedPost extends Component {
     componentDidMount(){
         let postId = this.props.match.params.id
         this.props.fetchSinglePost(postId)
-        this.props.fetchUserInfo(this.props.post.userId)
+        let userId = this.props.post.userId || 1
+        this.props.fetchUserInfo(userId)
     }
 
     render() {
@@ -17,7 +18,7 @@ class DetailedPost extends Component {
                 <div className="section">
                     <div className="row">
                         <div className="col-md-10">
-                            <DetailedPage body={this.props.post.body} username={this.props.userData.name} title={this.props.post.title} />
+                            <DetailedPage postId={this.props.post.id} body={this.props.post.body} username={this.props.userData.name} title={this.props.post.title} />
                         </div>
                     </div>
                 </div>

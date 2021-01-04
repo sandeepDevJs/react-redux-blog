@@ -1,5 +1,4 @@
-import { isInaccessible } from '@testing-library/react'
-import { FETCH_POSTS, FETCH_SINGLE_POST, FETCH_SINGLE_USER } from '../actions/type'
+import { FETCH_POSTS, FETCH_SINGLE_POST, FETCH_SINGLE_USER, FETCH_POSTS_COMMENTS } from '../actions/type'
 
 let postInitialState = [
     {
@@ -7,6 +6,13 @@ let postInitialState = [
         id: 1,
         title: "hello",
         body: "hello"
+    }
+]
+
+let commentInitialState = [
+    {
+        name:"loading ..",
+        body:"loading .."
     }
 ]
 export const fetchPostsReducer = (state=postInitialState, action) =>{
@@ -29,6 +35,15 @@ export const fetchSingleUserReducer = (state={name:"joey"}, action) =>{
 
     switch (action.type) {
         case FETCH_SINGLE_USER:return action.payload
+    
+        default: return state
+    }
+}
+
+export const fetchCommentsReducer = (state=commentInitialState, action) =>{
+
+    switch (action.type) {
+        case FETCH_POSTS_COMMENTS :return action.payload
     
         default: return state
     }
