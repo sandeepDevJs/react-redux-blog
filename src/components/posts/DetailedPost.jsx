@@ -18,7 +18,7 @@ class DetailedPost extends Component {
                 <div className="section">
                     <div className="row">
                         <div className="col-md-10">
-                            <DetailedPage postId={this.props.post.id} body={this.props.post.body} username={this.props.userData.name} title={this.props.post.title} />
+                            <DetailedPage key={this.props.post.id} postId={this.props.post.id} body={this.props.post.body} username={this.props.userData.name} title={this.props.post.title} />
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,10 @@
-import { FETCH_POSTS, FETCH_SINGLE_POST, FETCH_SINGLE_USER, FETCH_POSTS_COMMENTS } from '../actions/type'
+import { 
+        FETCH_POSTS, 
+        FETCH_SINGLE_POST, 
+        FETCH_SINGLE_USER, 
+        FETCH_POSTS_COMMENTS, 
+        POST_COMMENT 
+    } from '../actions/type'
 
 let postInitialState = [
     {
@@ -48,3 +54,13 @@ export const fetchCommentsReducer = (state=commentInitialState, action) =>{
         default: return state
     }
 }
+
+export const createdComment = (state={postId: 0}, action) =>{
+
+    switch (action.type) {
+        case POST_COMMENT:return action.payload
+    
+        default:return state
+    }
+
+} 

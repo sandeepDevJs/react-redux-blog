@@ -15,9 +15,9 @@ class PostContainer extends React.Component {
 
             <div className="container">
                 <div className="section">
-                <h1 class="my-4">Posts</h1>
+                <h1 className="my-4">Posts</h1>
                     <div className="row">
-                        <div class="col-md-10">
+                        <div className="col-md-10">
                             {
                                 posts.map(post => <SinglePost key={post.id} id={post.id} title={post.title} body={post.body} />)
                             }

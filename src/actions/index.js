@@ -1,5 +1,10 @@
 import axios from "axios";
-import { FETCH_POSTS, FETCH_SINGLE_POST, FETCH_SINGLE_USER, FETCH_POSTS_COMMENTS } from "./type"
+import { FETCH_POSTS, 
+        FETCH_SINGLE_POST, 
+        FETCH_SINGLE_USER, 
+        FETCH_POSTS_COMMENTS,
+        POST_COMMENT
+    } from "./type"
 
 export function fetchPosts(){
     return (dispatch) =>{
@@ -38,5 +43,20 @@ export function fetchComments(postId) {
             dispatch({type: FETCH_POSTS_COMMENTS, payload:response.data})
         })
         .catch(err => console.log(err))
+    }
+}
+
+export function createComment(comment, postId=1) {
+    return (dispatch) =>{
+        axios.post(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`,{
+            method: 'P0ST',
+            body: JSON.stringify({
+                ...comment
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(response => dispatch({type:POST_COMMENT, payload: response.data}))
+
     }
 }
